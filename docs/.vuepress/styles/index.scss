@@ -1,0 +1,309 @@
+// AI Guide 全局样式
+// 现代简洁 AI 科技风格
+
+// ========== 基础样式 ==========
+body {
+  @media (min-width: 1440px) {
+    font-size: 16px;
+  }
+
+  // 更平滑的字体渲染
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// ========== 导航栏 ==========
+.vp-navbar {
+  backdrop-filter: blur(12px) saturate(150%);
+  background: rgba(255, 255, 255, 0.85) !important;
+  border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+
+  [data-theme="dark"] & {
+    background: rgba(15, 23, 42, 0.9) !important;
+    border-bottom-color: rgba(99, 102, 241, 0.2);
+  }
+}
+
+.vp-site-name {
+  font-weight: 700 !important;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// ========== 侧边栏 ==========
+.vp-sidebar {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-right: 1px solid rgba(99, 102, 241, 0.1);
+
+  [data-theme="dark"] & {
+    background: rgba(30, 41, 59, 0.95) !important;
+    border-right-color: rgba(99, 102, 241, 0.15);
+  }
+
+  // 子目录缩进
+  .vp-sidebar-group .vp-sidebar-group {
+    padding-left: 1rem;
+  }
+
+  .vp-sidebar-group .vp-sidebar-links {
+    padding-left: 0.5rem;
+  }
+
+  .vp-sidebar-group .vp-sidebar-group .vp-sidebar-links {
+    padding-left: 1rem;
+  }
+
+  .vp-sidebar-group .vp-sidebar-group > .vp-sidebar-header {
+    padding-left: 0.5rem;
+  }
+}
+
+// 侧边栏链接悬停效果
+.vp-sidebar-link {
+  border-radius: 8px;
+  margin: 2px 8px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(99, 102, 241, 0.1);
+    color: #6366f1;
+  }
+
+  &.active {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.1));
+    color: #6366f1;
+    font-weight: 600;
+    border-left: 3px solid #6366f1;
+  }
+}
+
+// ========== 内容区域 ==========
+.theme-hope-content {
+  // 更舒适的阅读体验
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: #1f2937;
+
+    [data-theme="dark"] & {
+      color: #f1f5f9;
+    }
+  }
+
+  h1 {
+    font-size: 2rem;
+    border-bottom: 2px solid rgba(99, 102, 241, 0.2);
+    padding-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-top: 2.5rem;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 1.2em;
+      background: linear-gradient(180deg, #6366f1, #8b5cf6);
+      margin-right: 0.5rem;
+      border-radius: 2px;
+      vertical-align: middle;
+    }
+  }
+
+  // 链接样式
+  a {
+    color: #6366f1;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-bottom-color: #6366f1;
+    }
+  }
+
+  // 代码块
+  div[class*="language-"] {
+    border-radius: 12px;
+    border: 1px solid rgba(99, 102, 241, 0.1);
+
+    [data-theme="dark"] & {
+      border-color: rgba(99, 102, 241, 0.2);
+    }
+  }
+
+  // 行内代码
+  code:not([class*="language-"]) {
+    background: rgba(99, 102, 241, 0.1);
+    color: #6366f1;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+
+    [data-theme="dark"] & {
+      background: rgba(99, 102, 241, 0.2);
+      color: #a5b4fc;
+    }
+  }
+
+  // 表格
+  table {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(99, 102, 241, 0.15);
+
+    th {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.05));
+      font-weight: 600;
+    }
+
+    tr:hover {
+      background: rgba(99, 102, 241, 0.05);
+    }
+  }
+
+  // 引用块
+  blockquote {
+    border-left: 4px solid #6366f1;
+    background: rgba(99, 102, 241, 0.05);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.5rem;
+
+    [data-theme="dark"] & {
+      background: rgba(99, 102, 241, 0.1);
+    }
+  }
+}
+
+// ========== 页脚 ==========
+.vp-footer {
+  border-top: 1px solid rgba(99, 102, 241, 0.1);
+  background: rgba(249, 250, 251, 0.8);
+
+  [data-theme="dark"] & {
+    background: rgba(15, 23, 42, 0.8);
+    border-top-color: rgba(99, 102, 241, 0.15);
+  }
+}
+
+// ========== 按钮 ==========
+.vp-button {
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+
+  &.primary {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border: none;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.35);
+    }
+  }
+}
+
+// ========== 搜索框 ==========
+.search-box input {
+  border-radius: 20px;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  transition: all 0.3s ease;
+
+  &:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  }
+}
+
+// ========== 滚动条 ==========
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.3);
+  border-radius: 4px;
+
+  &:hover {
+    background: rgba(99, 102, 241, 0.5);
+  }
+}
+
+// ========== 选中文本 ==========
+::selection {
+  background: rgba(99, 102, 241, 0.3);
+  color: inherit;
+}
+
+// ========== 提示框 ==========
+.hint-container {
+  border-radius: 8px;
+  border: none;
+
+  &.tip {
+    background: rgba(99, 102, 241, 0.1);
+    border-left: 4px solid #6366f1;
+  }
+
+  &.warning {
+    background: rgba(245, 158, 11, 0.1);
+    border-left: 4px solid #f59e0b;
+  }
+
+  &.danger {
+    background: rgba(239, 68, 68, 0.1);
+    border-left: 4px solid #ef4444;
+  }
+
+  &.info {
+    background: rgba(59, 130, 246, 0.1);
+    border-left: 4px solid #3b82f6;
+  }
+}
+
+// ========== 目录 ==========
+.vp-toc-wrapper {
+  .vp-toc-link {
+    &.active {
+      color: #6366f1;
+      font-weight: 600;
+    }
+  }
+}
+
+// ========== 卡片效果 ==========
+.vp-card {
+  border-radius: 12px;
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(99, 102, 241, 0.15);
+    border-color: rgba(99, 102, 241, 0.3);
+  }
+}
+
+// ========== 动画效果 ==========
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.theme-hope-content {
+  animation: fadeIn 0.3s ease;
+}
