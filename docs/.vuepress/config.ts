@@ -33,7 +33,15 @@ export default defineUserConfig({
     ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
   ],
 
-  bundler: viteBundler(),
+  // ✅ 关键修改：把 allowedHosts 配进去
+  bundler: viteBundler({
+    viteOptions: {
+      server: {
+        host: "0.0.0.0",
+        allowedHosts: ["aiguide.icu", "www.aiguide.icu"],
+      },
+    },
+  }),
 
   theme,
 
