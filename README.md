@@ -135,6 +135,7 @@ pnpm install
 
 # 启动本地开发服务器
 pnpm docs:dev
+pnpm docs:dev -- --host 0.0.0.0
 ```
 
 ## 🤝 参与贡献
