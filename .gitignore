@@ -17,3 +17,13 @@ format-markdown.py
 package-lock.json
 lintmd-config.json
 .claude/settings.local.json
+
+# IDE
+.idea/
+
+# Python Cache
+.mypy_cache/
+__pycache__/
+
+# Temp data files
+articles_content*.json
