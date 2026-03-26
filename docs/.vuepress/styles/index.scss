@@ -386,12 +386,18 @@ body {
     display: block !important;
   }
 
-  /* ★ 导航栏深色模式 */
+  /* ★ 导航栏样式 - 跟随主题模式 */
+  .vp-navbar {
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    width: 100% !important;
+  }
+}
+
+/* 深色模式下全屏页面的导航栏样式 */
+[data-theme="dark"] .theme-container.custom-fullpage {
   .vp-navbar {
     background: rgba(10, 14, 39, 0.92) !important;
-    backdrop-filter: blur(16px) saturate(180%) !important;
     border-bottom: 1px solid rgba(99, 102, 241, 0.15) !important;
-    width: 100% !important;
   }
 
   .vp-navbar .vp-site-name {

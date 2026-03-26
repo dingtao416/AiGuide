@@ -1,5 +1,5 @@
 <template>
-  <div class="features-section">
+  <div class="features-section" :class="{ dark: isDark }">
     <div class="section-header">
       <h2 class="section-title">📚 知识体系</h2>
       <p class="section-desc">5 大模块，覆盖 AI 全栈学习路径</p>
@@ -26,6 +26,29 @@
 </template>
 
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const isDark = ref(true)
+
+function checkDarkMode() {
+  isDark.value = document.documentElement.getAttribute('data-theme') === 'dark'
+}
+
+let themeObserver = null
+
+onMounted(() => {
+  checkDarkMode()
+  themeObserver = new MutationObserver(() => { checkDarkMode() })
+  themeObserver.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme'],
+  })
+})
+
+onUnmounted(() => {
+  if (themeObserver) themeObserver.disconnect()
+})
+
 const features = [
   {
     icon: '🧠',
@@ -78,6 +101,10 @@ const features = [
 <style scoped>
 .features-section {
   padding: 5rem 2rem;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+  transition: background 0.3s ease;
+}
+.features-section.dark {
   background: linear-gradient(180deg, #0a0e27 0%, #111827 100%);
 }
 
@@ -89,8 +116,12 @@ const features = [
 .section-title {
   font-size: 2.2rem;
   font-weight: 800;
-  color: #f1f5f9;
+  color: #1f2937;
   margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+.dark .section-title {
+  color: #f1f5f9;
 }
 
 .section-desc {
@@ -110,8 +141,8 @@ const features = [
   position: relative;
   padding: 2rem;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(99, 102, 241, 0.12);
   backdrop-filter: blur(20px);
   text-decoration: none !important;
   color: inherit !important;
@@ -119,11 +150,21 @@ const features = [
   overflow: hidden;
   animation: fadeInUp 0.6s ease both;
 }
+.dark .feature-card {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
 
 .feature-card:hover {
   transform: translateY(-6px);
+  border-color: rgba(99, 102, 241, 0.3);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 12px 40px rgba(99, 102, 241, 0.1);
+}
+.dark .feature-card:hover {
   border-color: rgba(255, 255, 255, 0.2);
   background: rgba(255, 255, 255, 0.08);
+  box-shadow: none;
 }
 
 .card-glow {
@@ -149,15 +190,23 @@ const features = [
 .card-title {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #f1f5f9;
+  color: #1f2937;
   margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+.dark .card-title {
+  color: #f1f5f9;
 }
 
 .card-desc {
   font-size: 0.9rem;
-  color: #94a3b8;
+  color: #64748b;
   line-height: 1.6;
   margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+.dark .card-desc {
+  color: #94a3b8;
 }
 
 .card-tags {
@@ -170,10 +219,16 @@ const features = [
 .tag {
   padding: 3px 10px;
   border-radius: 6px;
+  background: rgba(99, 102, 241, 0.1);
+  color: #6366f1;
+  font-size: 0.75rem;
+  border: 1px solid rgba(99, 102, 241, 0.15);
+  transition: all 0.3s ease;
+}
+.dark .tag {
   background: rgba(99, 102, 241, 0.15);
   color: #a5b4fc;
-  font-size: 0.75rem;
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-color: rgba(99, 102, 241, 0.2);
 }
 
 .card-count {

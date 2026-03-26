@@ -1,5 +1,5 @@
 <template>
-  <div class="hero-particles-wrapper">
+  <div class="hero-particles-wrapper" :class="{ dark: isDark }">
     <canvas ref="canvasRef" class="particles-canvas"></canvas>
     <div class="hero-content">
       <div class="hero-badge">🚀 AI 学习新方式</div>
@@ -45,11 +45,16 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 
 const canvasRef = ref(null)
 const displayText = ref('')
 const animatedArticles = ref(0)
+const isDark = ref(true)
+
+function checkDarkMode() {
+  isDark.value = document.documentElement.getAttribute('data-theme') === 'dark'
+}
 
 const phrases = [
   '从 ChatGPT 到 Agent 实战',
@@ -181,16 +186,28 @@ function initParticles() {
 }
 
 let cleanup = null
+let themeObserver = null
 
 onMounted(() => {
+  checkDarkMode()
   typeWriter()
   animateNumber()
   cleanup = initParticles()
+
+  // 监听主题切换
+  themeObserver = new MutationObserver(() => {
+    checkDarkMode()
+  })
+  themeObserver.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme'],
+  })
 })
 
 onUnmounted(() => {
   clearTimeout(typeTimer)
   if (cleanup) cleanup()
+  if (themeObserver) themeObserver.disconnect()
 })
 </script>
 
@@ -202,6 +219,10 @@ onUnmounted(() => {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 30%, #dbeafe 70%, #eef2ff 100%);
+  transition: background 0.3s ease;
+}
+.hero-particles-wrapper.dark {
   background: linear-gradient(135deg, #0a0e27 0%, #1a1040 30%, #0d1933 70%, #0a0e27 100%);
 }
 
@@ -226,12 +247,18 @@ onUnmounted(() => {
   display: inline-block;
   padding: 6px 18px;
   border-radius: 50px;
-  background: rgba(99, 102, 241, 0.2);
-  border: 1px solid rgba(99, 102, 241, 0.4);
-  color: #a5b4fc;
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  color: #6366f1;
   font-size: 0.9rem;
   margin-bottom: 1.5rem;
   animation: fadeInDown 0.8s ease;
+  transition: all 0.3s ease;
+}
+.dark .hero-badge {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: rgba(99, 102, 241, 0.4);
+  color: #a5b4fc;
 }
 
 .hero-title {
@@ -250,19 +277,30 @@ onUnmounted(() => {
 
 .hero-subtitle {
   font-size: 1.6rem;
-  color: #cbd5e1;
+  color: #475569;
   margin-bottom: 1rem;
   min-height: 2.4rem;
   animation: fadeInUp 0.8s ease 0.4s both;
+  transition: color 0.3s ease;
+}
+.dark .hero-subtitle {
+  color: #cbd5e1;
 }
 
 .typing-text {
+  color: #6366f1;
+  transition: color 0.3s ease;
+}
+.dark .typing-text {
   color: #93c5fd;
 }
 
 .cursor-blink {
-  color: #60a5fa;
+  color: #6366f1;
   animation: blink 1s infinite;
+}
+.dark .cursor-blink {
+  color: #60a5fa;
 }
 
 @keyframes blink {
@@ -272,10 +310,14 @@ onUnmounted(() => {
 
 .hero-desc {
   font-size: 1.05rem;
-  color: #94a3b8;
+  color: #64748b;
   margin-bottom: 2.5rem;
   line-height: 1.8;
   animation: fadeInUp 0.8s ease 0.6s both;
+  transition: color 0.3s ease;
+}
+.dark .hero-desc {
+  color: #94a3b8;
 }
 
 .hero-actions {
@@ -319,9 +361,9 @@ onUnmounted(() => {
   align-items: center;
   gap: 8px;
   padding: 14px 32px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #e2e8f0 !important;
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  color: #4f46e5 !important;
   border-radius: 12px;
   font-size: 1.1rem;
   font-weight: 600;
@@ -329,11 +371,20 @@ onUnmounted(() => {
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
 }
+.dark .btn-secondary {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #e2e8f0 !important;
+}
 
 .btn-secondary:hover {
+  background: rgba(99, 102, 241, 0.15);
+  border-color: rgba(99, 102, 241, 0.4);
+  transform: translateY(-2px);
+}
+.dark .btn-secondary:hover {
   background: rgba(255, 255, 255, 0.12);
   border-color: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
 }
 
 .hero-stats {
@@ -367,6 +418,10 @@ onUnmounted(() => {
 .stat-divider {
   width: 1px;
   height: 40px;
+  background: rgba(99, 102, 241, 0.2);
+  transition: background 0.3s ease;
+}
+.dark .stat-divider {
   background: rgba(255, 255, 255, 0.1);
 }
 

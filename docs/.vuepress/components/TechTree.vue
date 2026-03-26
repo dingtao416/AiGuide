@@ -1,5 +1,5 @@
 <template>
-  <div class="tech-tree-section">
+  <div class="tech-tree-section" :class="{ dark: isDark }">
     <div class="section-header">
       <h2 class="section-title">🗺️ 学习路径</h2>
       <p class="section-desc">点击节点探索你的 AI 学习之旅</p>
@@ -59,7 +59,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
 const treeRef = ref(null)
 const activeNode = ref(-1)
@@ -68,6 +68,13 @@ const mounted = ref(false)
 const svgW = ref(900)
 const svgH = ref(400)
 const lines = ref([])
+const isDark = ref(true)
+
+function checkDarkMode() {
+  isDark.value = document.documentElement.getAttribute('data-theme') === 'dark'
+}
+
+let themeObserver = null
 
 const nodes = [
   { icon: '📖', label: 'AI基础', desc: '了解AI的基本概念与发展历程', level: 0, col: '3', row: '1', color: 'rgba(99,102,241,0.3)' },
@@ -88,6 +95,13 @@ const hotArticles = [
 ]
 
 onMounted(() => {
+  checkDarkMode()
+  themeObserver = new MutationObserver(() => { checkDarkMode() })
+  themeObserver.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme'],
+  })
+
   // Simple line connections based on grid positions
   lines.value = [
     { x1: 450, y1: 70, x2: 150, y2: 170 },   // 基础 → 模型
@@ -100,11 +114,19 @@ onMounted(() => {
   ]
   mounted.value = true
 })
+
+onUnmounted(() => {
+  if (themeObserver) themeObserver.disconnect()
+})
 </script>
 
 <style scoped>
 .tech-tree-section {
   padding: 5rem 2rem;
+  background: linear-gradient(180deg, #eef2ff 0%, #f8fafc 100%);
+  transition: background 0.3s ease;
+}
+.tech-tree-section.dark {
   background: linear-gradient(180deg, #111827 0%, #0f172a 100%);
 }
 
@@ -116,8 +138,12 @@ onMounted(() => {
 .section-title {
   font-size: 2.2rem;
   font-weight: 800;
-  color: #f1f5f9;
+  color: #1f2937;
   margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+.dark .section-title {
+  color: #f1f5f9;
 }
 
 .section-desc {
@@ -166,11 +192,15 @@ onMounted(() => {
   justify-content: center;
   padding: 1rem;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(99, 102, 241, 0.06);
+  border: 1px solid rgba(99, 102, 241, 0.12);
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
+}
+.dark .tree-node {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 .tree-node:hover, .tree-node.active {
@@ -205,15 +235,23 @@ onMounted(() => {
 .node-label {
   font-size: 0.95rem;
   font-weight: 700;
+  color: #1f2937;
+  transition: color 0.3s ease;
+}
+.dark .node-label {
   color: #e2e8f0;
 }
 
 .node-sub {
   font-size: 0.75rem;
-  color: #94a3b8;
+  color: #64748b;
   margin-top: 4px;
   text-align: center;
   animation: fadeIn 0.3s ease;
+  transition: color 0.3s ease;
+}
+.dark .node-sub {
+  color: #94a3b8;
 }
 
 @keyframes fadeIn {
@@ -230,9 +268,13 @@ onMounted(() => {
 .hot-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #f1f5f9;
+  color: #1f2937;
   margin-bottom: 1.5rem;
   text-align: center;
+  transition: color 0.3s ease;
+}
+.dark .hot-title {
+  color: #f1f5f9;
 }
 
 .hot-grid {
@@ -247,17 +289,25 @@ onMounted(() => {
   gap: 10px;
   padding: 12px 16px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(99, 102, 241, 0.1);
   text-decoration: none !important;
-  color: #cbd5e1 !important;
+  color: #334155 !important;
   transition: all 0.3s ease;
+}
+.dark .hot-card {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.06);
+  color: #cbd5e1 !important;
 }
 
 .hot-card:hover {
-  background: rgba(99, 102, 241, 0.1);
+  background: rgba(99, 102, 241, 0.08);
   border-color: rgba(99, 102, 241, 0.3);
   transform: translateX(4px);
+}
+.dark .hot-card:hover {
+  background: rgba(99, 102, 241, 0.1);
 }
 
 .hot-rank {
@@ -275,9 +325,14 @@ onMounted(() => {
 .hot-tag {
   padding: 2px 8px;
   border-radius: 4px;
+  background: rgba(99, 102, 241, 0.1);
+  color: #6366f1;
+  font-size: 0.7rem;
+  transition: all 0.3s ease;
+}
+.dark .hot-tag {
   background: rgba(99, 102, 241, 0.15);
   color: #a5b4fc;
-  font-size: 0.7rem;
 }
 
 @media (max-width: 768px) {
