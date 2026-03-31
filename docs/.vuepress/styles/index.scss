@@ -307,3 +307,133 @@ body {
 .theme-hope-content {
   animation: fadeIn 0.3s ease;
 }
+
+/* ===== 全屏落地页样式（首页 + 里程碑页） ===== */
+/* 通过 client.ts 动态为 .theme-container 添加 .custom-fullpage 类 */
+
+.theme-container.custom-fullpage {
+  /* ★ 覆盖 CSS 变量 — 这是限制宽度的根本原因 */
+  --content-width: 100% !important;
+  --home-page-width: 100% !important;
+
+  max-width: 100% !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow-x: hidden !important;
+
+  /* 隐藏默认标题和页面信息 */
+  .vp-page-title {
+    display: none !important;
+  }
+
+  .vp-page-meta {
+    display: none !important;
+  }
+
+  .vp-breadcrumb {
+    display: none !important;
+  }
+
+  /* ★ 核心：让 vp-page 撑满全屏，覆盖 padding: 60px 256px 32px 0 */
+  main.vp-page {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    padding-top: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* ★ 核心：覆盖 [vp-content] 的 max-width: 980px 和 padding */
+  [vp-content] {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* [vp-content] 的子 div 也撑满 */
+  [vp-content] > div {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* 隐藏侧边栏 */
+  .vp-sidebar {
+    display: none !important;
+  }
+
+  /* 隐藏 TOC 占位 */
+  .vp-toc-placeholder,
+  .vp-toc {
+    display: none !important;
+  }
+
+  /* 隐藏默认 footer */
+  .vp-footer-wrapper,
+  > footer,
+  .vp-footer {
+    display: none !important;
+  }
+
+  /* 返回顶部按钮保持可见 */
+  .vp-back-to-top-button {
+    display: block !important;
+  }
+
+  /* ★ 导航栏样式 - 跟随主题模式 */
+  .vp-navbar {
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    width: 100% !important;
+  }
+}
+
+/* 深色模式下全屏页面的导航栏样式 */
+[data-theme="dark"] .theme-container.custom-fullpage {
+  .vp-navbar {
+    background: rgba(10, 14, 39, 0.92) !important;
+    border-bottom: 1px solid rgba(99, 102, 241, 0.15) !important;
+  }
+
+  .vp-navbar .vp-site-name {
+    color: #e2e8f0 !important;
+    -webkit-text-fill-color: #e2e8f0 !important;
+    background: none !important;
+  }
+
+  .vp-navbar .vp-nav-item a,
+  .vp-navbar .vp-nav-item button,
+  .vp-navbar .vp-navbar-dropdown-title,
+  .vp-navbar a,
+  .vp-navbar button {
+    color: #cbd5e1 !important;
+  }
+
+  .vp-navbar .vp-nav-item a:hover,
+  .vp-navbar .vp-nav-item a.active,
+  .vp-navbar a:hover {
+    color: #a5b4fc !important;
+  }
+
+  .vp-navbar .search-pro-button,
+  .vp-navbar input {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    color: #cbd5e1 !important;
+  }
+
+  .vp-navbar .vp-color-mode-switch {
+    color: #cbd5e1 !important;
+  }
+}
+
+/* 额外保障 */
+html:has(.custom-fullpage),
+body:has(.custom-fullpage) {
+  overflow-x: hidden !important;
+}
