@@ -33,11 +33,11 @@ Anthropic 出品的以安全可靠著称的 AI 助手，擅长长文本处理和
 
 ### 💎 [Gemini 系列模型](/gemini-family/)
 
-Google推出的多模态AI模型，原生支持文本、图像、代码等多种格式。
+Google 出品的原生多模态 AI 模型，深度整合 Google 生态。
 
-- **[Gemini Pro 功能详解](./gemini-family/gemini-pro.md)** - 多模态能力全面体验
-- **[Gemini Ultra 高级应用](./gemini-family/gemini-ultra.md)** - 顶级性能的应用案例
-- **[Bard 到 Gemini 的迁移](./gemini-family/bard-to-gemini.md)** - 平台升级指南
+- **[Gemini 系列模型全览](./gemini-family/gemini-overview.md)** - 从 Bard 到 Gemini 3.1 的完整解读
+- **[Gemini 使用指南](./gemini-family/gemini-practical.md)** - Google 生态整合与实战技巧
+- **[Nano Banana 与 Veo](./gemini-family/gemini-frontiers.md)** - 图像生成与视频生成详解
 
 ### 🇨🇳 [国产模型](/domestic-models/)
 
