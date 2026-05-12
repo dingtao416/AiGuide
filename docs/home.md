@@ -5,15 +5,15 @@ title: AI进阶之路
 
 # AI进阶之路
 
-知识库取名 **AI Guide**，即 **AI 进阶之路**，意为「成为一名AI应用高手」，是系统学习 AI 以来所有原创文章和学习资料的大聚合。内容包括 AI 模型入门、多模态 AI、AI 智能体（Agent）、MCP协议、SKILL系统、RULES引擎、实战场景、工具平台等核心知识点。风趣幽默、通俗易懂。学 AI，就认准 AI Guide😄。
+知识库取名 **AI Guide**，即 **AI 进阶之路**，意为「面向所有人的AI知识库」，是系统学习 AI 以来所有原创文章和学习资料的大聚合。不论你是学生、职场人、创作者，还是对 AI 充满好奇的普通人，都能在这里找到适合自己的 AI 学习内容。涵盖 AI 模型入门、多模态 AI、AI 智能体、实战场景、工具平台等核心知识板块。风趣幽默、通俗易懂。学 AI，就认准 AI Guide😄。
 
-知识库旨在为学习 AI 的小伙伴提供一系列：
+知识库旨在为每一位 AI 学习者提供：
 
 - **优质的原创 AI 教程**
 - **全面清晰的 AI 学习路线**
 - **免费但靠谱的 AI 学习资料**
-- **大量实战代码示例和应用案例**
-- **前沿 AI Agent 开发技术解析**
+- **大量实战案例和应用场景**
+- **前沿 AI 技术趋势解读**
 
 知识库会持续保持**更新**，欢迎收藏品鉴！
 
@@ -47,31 +47,31 @@ title: AI进阶之路
 
 ## AI模型入门
 
-**AI模型入门非常重要**！包括 GPT 系列、Claude 系列、Gemini 系列、国产模型和开源模型。掌握这些模型的特点和用法，是 AI 应用开发的基石。
+**AI模型入门非常重要**！包括 GPT 系列、Claude 系列、Gemini 系列、国产模型和开源模型。了解这些模型各自的特点和适用场景，是进入 AI 世界的第一步。
 
 ### GPT 系列模型
 
-OpenAI 出品的最受欢迎的大语言模型家族，从 ChatGPT 到 GPT-4o 的完整指南。
+OpenAI 出品的最受欢迎的大语言模型家族，从入门到最新发展的完整指南。
 
-- [GPT-4o 详解 — 多模态AI的新标杆](/models-intro/gpt-family/gpt-4o.html)
-- [ChatGPT 实用技巧 — 高效使用指南](/models-intro/gpt-family/chatgpt.html)
-- [GPT API 开发指南 — 从零开始调用](/models-intro/gpt-family/gpt-api.html)
+- [GPT 系列模型全览 — 从 GPT-1 到 GPT-5.5](/models-intro/gpt-family/gpt-overview.html)
+- [ChatGPT 实战手册 — 让 AI 成为你的日常助手](/models-intro/gpt-family/chatgpt.html)
+- [GPT 前沿与开发者资源 — 推理模型、图像生成与 API](/models-intro/gpt-family/gpt-advanced.html)
 
 ### Claude 系列模型
 
-Anthropic 出品的安全可靠的 AI 助手，擅长复杂推理和长文本处理。
+Anthropic 出品的安全可靠的 AI 助手，擅长复杂推理和长文本处理。包含模型全览、使用指南与 Claude Code 详解。
 
-- [Claude 3 系列对比 — Haiku、Sonnet、Opus 详细对比](/models-intro/claude-family/claude-3.html)
-- [Claude Sonnet 最佳实践 — 性价比之王怎么用](/models-intro/claude-family/claude-sonnet.html)
-- [Claude API 使用指南 — 接口调用详解](/models-intro/claude-family/claude-api.html)
+- [Claude 系列模型全览 — Opus/Sonnet/Haiku 怎么选](/models-intro/claude-family/claude-overview.html)
+- [Claude 使用指南 — 特色功能与实战技巧](/models-intro/claude-family/claude-practical.html)
+- [Claude Code 与模型的关系 — 模型 vs Agent 客户端详解](/models-intro/claude-family/claude-code.html)
 
 ### Gemini 系列模型
 
-Google 推出的多模态 AI 模型，原生支持文本、图像、代码等多种格式。
+Google 出品的原生多模态 AI 模型，深度整合 Google 生态，支持图像和视频生成。
 
-- [Gemini Pro 使用指南](/models-intro/gemini-family/gemini-pro.html)
-- [Gemini Ultra 高级功能](/models-intro/gemini-family/gemini-ultra.html)
-- [从 Bard 到 Gemini 的进化之路](/models-intro/gemini-family/bard-to-gemini.html)
+- [Gemini 系列模型全览 — 从 Bard 到 Gemini 3.1](/models-intro/gemini-family/gemini-overview.html)
+- [Gemini 使用指南 — Google 生态整合与实战技巧](/models-intro/gemini-family/gemini-practical.html)
+- [Nano Banana 与 Veo — 图像生成与视频生成详解](/models-intro/gemini-family/gemini-frontiers.html)
 
 ### 国产模型
 
@@ -167,7 +167,7 @@ Google 推出的多模态 AI 模型，原生支持文本、图像、代码等多
 
 ## AI智能体
 
-AI Agent（智能体）是当前AI领域最火热的方向，也是AI走向实际生产力的关键。这部分涵盖 Agent 的核心概念、开发框架、MCP 协议、SKILL 技能系统、RULES 规则引擎等。
+AI Agent（智能体）是当前AI领域最受关注的方向，也是AI从"聊天工具"走向"能干活的数字助手"的关键。这部分带你了解 Agent 是什么、能做什么，以及背后的运作原理。
 
 ### Agent 基础概念
 
@@ -196,7 +196,7 @@ AI Agent（智能体）是当前AI领域最火热的方向，也是AI走向实�
 
 ### MCP 协议
 
-Model Context Protocol 是连接 AI 应用与外部数据源的标准化协议，是 Agent 能力扩展的核心基础设施。
+Model Context Protocol（MCP）是让 AI 能够安全地连接外部数据与工具的标准化协议，理解它有助于你更好地使用和选择 AI 工具。
 
 - [MCP 协议概述 — 为什么需要MCP](/ai-agents/mcp-protocol/mcp-overview.html)
 - [MCP 架构详解 — 客户端与服务端](/ai-agents/mcp-protocol/mcp-architecture.html)
@@ -208,7 +208,7 @@ Model Context Protocol 是连接 AI 应用与外部数据源的标准化协议�
 
 ### SKILL 技能系统
 
-技能系统让 Agent 具备可组合、可复用的模块化能力，是 Agent 能力的核心载体。
+技能系统（SKILL）让 AI 拥有可组合、可复用的专项能力，就像给 AI 装上不同的"技能包"，让它能胜任更复杂的任务。
 
 - [SKILL 基础概念 — 什么是技能系统](/ai-agents/skill-systems/skill-fundamentals.html)
 - [技能定义 — 如何定义一个Skill](/ai-agents/skill-systems/skill-definition.html)
@@ -220,7 +220,7 @@ Model Context Protocol 是连接 AI 应用与外部数据源的标准化协议�
 
 ### RULES 规则引擎
 
-规则引擎控制 Agent 的行为逻辑和决策过程，是 Agent 智能决策的大脑。
+规则引擎（RULES）定义了 AI 的行为边界和决策逻辑，让 AI 在复杂场景下也能做出可靠、符合预期的判断。
 
 - [RULES 概述 — 为什么需要规则引擎](/ai-agents/rules-engine/rules-overview.html)
 - [规则定义 — 如何编写规则](/ai-agents/rules-engine/rule-definition.html)
@@ -311,7 +311,7 @@ Model Context Protocol 是连接 AI 应用与外部数据源的标准化协议�
 
 ### 无代码平台
 
-零代码搭建 AI 应用，降低入门门槛。
+无需编程基础，拖拽式搭建 AI 应用，让每个人都能上手。
 
 - [Dify — 开源LLM应用开发平台](/tools-platforms/no-code-platforms/dify.html)
 - [Coze — 字节跳动AI Bot平台](/tools-platforms/no-code-platforms/coze.html)
@@ -321,7 +321,7 @@ Model Context Protocol 是连接 AI 应用与外部数据源的标准化协议�
 
 ### 开发工具
 
-AI 编程助手和开发环境，让编码效率翻倍。
+AI 编程助手和开发环境，让写代码更轻松，也让你看到 AI 在实际工作流中的真正威力。
 
 - [Cursor — AI原生代码编辑器](/tools-platforms/development-tools/cursor-ai.html)
 - [GitHub Copilot — 代码自动补全](/tools-platforms/development-tools/copilot.html)
