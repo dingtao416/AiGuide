@@ -3,13 +3,13 @@
 
 // ========== 基础样式 ==========
 body {
-  @media (min-width: 1440px) {
-    font-size: 16px;
-  }
-
   // 更平滑的字体渲染
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  @media (min-width: 1440px) {
+    font-size: 16px;
+  }
 }
 
 // ========== 导航栏 ==========
@@ -72,7 +72,11 @@ body {
   }
 
   &.active {
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.1));
+    background: linear-gradient(
+      135deg,
+      rgba(99, 102, 241, 0.15),
+      rgba(139, 92, 246, 0.1)
+    );
     color: #6366f1;
     font-weight: 600;
     border-left: 3px solid #6366f1;
@@ -82,7 +86,12 @@ body {
 // ========== 内容区域 ==========
 .theme-hope-content {
   // 更舒适的阅读体验
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-weight: 700;
     color: #1f2937;
 
@@ -156,7 +165,11 @@ body {
     border: 1px solid rgba(99, 102, 241, 0.15);
 
     th {
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.05));
+      background: linear-gradient(
+        135deg,
+        rgba(99, 102, 241, 0.1),
+        rgba(139, 92, 246, 0.05)
+      );
       font-weight: 600;
     }
 
@@ -208,6 +221,9 @@ body {
 
 // ========== 搜索框 ==========
 .search-box input {
+  width: 400px;
+  padding: 14px 20px 14px 30px;
+  font-size: 16px;
   border-radius: 20px;
   border: 1px solid rgba(99, 102, 241, 0.2);
   transition: all 0.3s ease;
@@ -436,4 +452,15 @@ body {
 html:has(.custom-fullpage),
 body:has(.custom-fullpage) {
   overflow-x: hidden !important;
+}
+
+/* Search box/result width sync */
+.search-box {
+  --search-box-width: 400px;
+  --search-input-width: var(--search-box-width);
+  --search-result-width: var(--search-box-width);
+}
+
+.search-box .suggestions {
+  width: var(--search-box-width);
 }
