@@ -7,7 +7,7 @@ export default defineUserConfig({
 
   title: "AIGuide",
   description:
-    "「AI 学习指南」一份涵盖人工智能、机器学习、深度学习、大语言模型等核心知识的学习指南。学习 AI，首选 AIGuide！",
+    "「AI Guide」面向所有人的AI知识网站 — 从AI模型入门到实战应用，系统学习人工智能。风趣幽默、通俗易懂，学习 AI 就认准 AI Guide！",
   lang: "zh-CN",
 
   head: [
@@ -27,7 +27,7 @@ export default defineUserConfig({
       {
         name: "description",
         content:
-          "「AI 学习指南」一份涵盖人工智能、机器学习、深度学习、大语言模型等核心知识的学习指南。学习 AI，首选 AIGuide！",
+          "「AI Guide」面向所有人的AI知识网站 — 从AI模型入门到实战应用，系统学习人工智能。风趣幽默、通俗易懂，学习 AI 就认准 AI Guide！",
       },
     ],
     ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
@@ -38,6 +38,7 @@ export default defineUserConfig({
     viteOptions: {
       server: {
         host: "0.0.0.0",
+        port: 8090,
         allowedHosts: ["aiguide.icu", "www.aiguide.icu"],
       },
     },
